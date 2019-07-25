@@ -4,7 +4,6 @@
 ## index
 1. Getting started
     * Oracle Database 11g Express Edition
-    ![screenshot database-diagram](https://user-images.githubusercontent.com/35483497/61840536-6efac380-aecc-11e9-9729-b0db10f4770e.PNG)
     * Spring framework
     * Config File
     * OpenWeatherMap
@@ -28,8 +27,43 @@
  
 ### 1. Getting Started
 1. Oracle Database 11g Express Edition
+    ![screenshot database-diagram](https://user-images.githubusercontent.com/35483497/61840536-6efac380-aecc-11e9-9729-b0db10f4770e.PNG)
 2. Spring frame work
+   servlet.context
+   ```
+   <beans:bean id="dataSource"   //DB 계정 및 패스워드 설정
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName"
+			value="oracle.jdbc.OracleDriver" />
+		<beans:property name="url"
+			value="jdbc:oracle:thin:@localhost:1521:XE" />
+		<beans:property name="username" value="USERNAME" />
+		<beans:property name="password" value="PASSWORD" />
+	</beans:bean>
+   
+   <websocket:handlers>   //웹소켓 매핑명 지정
+		<websocket:mapping path="/chat"
+			handler="myHandler" />
+	</websocket:handlers>
+   ```
 3. Config File
+   설정파일에서는 Database정보와 서버
+   ```
+   #### Oracle DB Info ####
+   db.driver=oracle.jdbc.driver.OracleDriver
+   db.url=jdbc:oracle:thin:@localhost:1521:orcl
+   db.username=USERNAME
+   db.password=PASSWORD
+
+   #### File Path ####
+   path.image=http://SERVER IP ADDRESS/traveler/resources/images
+   #### Server IP Address Info ####
+   ip.address=IPADDRESS
+   ip.portNo=PORT#
+
+   #### openWeather App Key info ####
+   OpenWeather.appkey=APPKEY
+   ```
 4. OpenWeatherMap
 
 ### 2. Config File
@@ -38,7 +72,6 @@
 1. Authentication
    * signin
       ![screenshot_signin](https://user-images.githubusercontent.com/35483497/61838479-77e79700-aec4-11e9-8c79-913db154cae4.png)
-        
 
    * signup
       ![screenshot_signup](https://user-images.githubusercontent.com/35483497/61838537-c1d07d00-aec4-11e9-9e34-42494df127a5.png)
